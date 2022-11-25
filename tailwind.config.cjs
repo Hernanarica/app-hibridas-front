@@ -1,8 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [],
+  content: [
+    './src/*.jsx',
+    './src/**/*.jsx'
+  ],
   theme: {
     extend: {},
   },
   plugins: [],
-}
+};
