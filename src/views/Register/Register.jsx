@@ -1,9 +1,29 @@
+import useForm from "../../hooks/useForm";
+import { registerService } from "../../services";
+
 export function Register() {
+  const { formData, handleInputchange, reset } = useForm({
+    name: '',
+    lastname: '',
+    email: '',
+    password: '',
+  });
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    registerService(formData);
+  }
   return (
     <div className='flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8'>
       <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
         <div className='bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10'>
-          <form className='space-y-6' action='#' method='POST'>
+          <form
+            className='space-y-6'
+            action='#'
+            method='POST'
+            onSubmit={ handleSubmit }
+          >
             <div>
               <label
                 htmlFor='name'
@@ -18,6 +38,8 @@ export function Register() {
                   type='text'
                   autoComplete='Nombre'
                   required
+                  onChange={ handleInputchange }
+                  value={ formData.name }
                   className='block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                 />
               </div>
@@ -36,6 +58,8 @@ export function Register() {
                   type='text'
                   autoComplete='lastname'
                   required
+                  onChange={ handleInputchange }
+                  value={ formData.lastname }
                   className='block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                 />
               </div>
@@ -54,6 +78,8 @@ export function Register() {
                   type='email'
                   autoComplete='email'
                   required
+                  onChange={ handleInputchange }
+                  value={ formData.email }
                   className='block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                 />
               </div>
@@ -72,6 +98,8 @@ export function Register() {
                   type='password'
                   autoComplete='current-password'
                   required
+                  onChange={ handleInputchange }
+                  value={ formData.password }
                   className='block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                 />
               </div>
