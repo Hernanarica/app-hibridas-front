@@ -25,12 +25,21 @@ export function UserContextProvider({ children }) {
 			}
 		});
 		
-		localStorage.setItem('userCredentials', JSON.stringify(formData))
+		localStorage.setItem('userCredentials', JSON.stringify(formData));
+	};
+	
+	const clearUser = (formData) => {
+		dispatch({
+			type: 'clearUser',
+		});
+		
+		localStorage.removeItem('userCredentials');
 	};
 	
 	const value = {
 		state,
-		setUser
+		setUser,
+		clearUser
 	};
 	
 	return (

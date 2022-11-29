@@ -14,13 +14,15 @@ export function AuthContextProvider({ children }) {
 			type: 'login',
 		});
 		
-		localStorage.setItem('isAuthenticated', true)
+		localStorage.setItem('isAuthenticated', true);
 	}
 	
 	const logout = () => {
 		dispatch({
 			type: 'logout',
 		});
+		
+		localStorage.removeItem('isAuthenticated');
 	}
 	
 	const value = {

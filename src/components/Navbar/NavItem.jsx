@@ -1,7 +1,17 @@
 import { NavLink } from 'react-router-dom';
 import { navRoutes } from './router/NavRoutes';
+import { useContext } from 'react';
+import { AuthContext, UserContext } from '../../state/context/index.js';
 
 export function NavItem() {
+  const { state, logout } = useContext(AuthContext);
+  const { clearUser } = useContext(UserContext);
+  
+  const handleLogout = () => {
+    logout();
+    clearUser();
+  };
+  
   return (
     <>
       {
@@ -16,6 +26,8 @@ export function NavItem() {
           </li>
         ))
       }
+  
+      { state.isAuthenticated && <button onClick={ handleLogout }>Logout</button> }
     </>
   );
 }
