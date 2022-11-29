@@ -2,7 +2,7 @@ import useForm from "../../hooks/useForm";
 import { registerService } from "../../services";
 
 export function Register() {
-  const { formData, handleInputchange, reset } = useForm({
+  const { formData, handleInputChange, reset } = useForm({
     name: '',
     lastname: '',
     email: '',
@@ -38,7 +38,7 @@ export function Register() {
                   type='text'
                   autoComplete='Nombre'
                   required
-                  onChange={ handleInputchange }
+                  onChange={ handleInputChange }
                   value={ formData.name }
                   className='block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                 />
@@ -58,7 +58,7 @@ export function Register() {
                   type='text'
                   autoComplete='lastname'
                   required
-                  onChange={ handleInputchange }
+                  onChange={ handleInputChange }
                   value={ formData.lastname }
                   className='block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                 />
@@ -78,7 +78,7 @@ export function Register() {
                   type='email'
                   autoComplete='email'
                   required
-                  onChange={ handleInputchange }
+                  onChange={ handleInputChange }
                   value={ formData.email }
                   className='block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                 />
@@ -98,7 +98,7 @@ export function Register() {
                   type='password'
                   autoComplete='current-password'
                   required
-                  onChange={ handleInputchange }
+                  onChange={ handleInputChange }
                   value={ formData.password }
                   className='block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                 />

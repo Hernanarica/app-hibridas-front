@@ -1,5 +1,5 @@
-export function login(userData) {
-  fetch(`${ import.meta.env.VITE_BASE_URL_API }/user/auth`, {
+export function loginService(userData) {
+  return fetch(`${ import.meta.env.VITE_BASE_URL_API }/user/auth`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -7,7 +7,7 @@ export function login(userData) {
     body: JSON.stringify(userData),
   })
     .then((res) => res.json())
-    .then((data) => console.log(data))
+    .then((data) => data)
     .catch((err) => {
       console.error(err);
     });

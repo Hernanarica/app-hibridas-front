@@ -1,3 +1,3 @@
-export function logout() {
+export function logoutService() {
   console.log('logout...');
 }

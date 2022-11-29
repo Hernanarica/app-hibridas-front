@@ -1,22 +1,31 @@
+import { useContext } from 'react';
 import useForm from '../../hooks/useForm';
-import { login } from '../../services';
+import { loginService } from '../../services';
+import { AuthContext, UserContext } from '../../state/context';
 
 export function Login() {
-  const { formData, handleInputchange, reset } = useForm({
+  const { state, login } = useContext(AuthContext);
+  const { state: stateUser, setUser } = useContext(UserContext);
+  const { formData, handleInputChange, reset } = useForm({
     email: '',
     password: '',
   });
-
+  
   const handleSubmit = e => {
     e.preventDefault();
 
-    login(formData);
-
-    reset();
+    loginService(formData).then(({ user, token }) => {
+      login();
+      setUser(user);
+      reset();
+    });
+    
   }
 
   return (
     <div className='flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8'>
+      { JSON.stringify(state) }
+      { JSON.stringify(stateUser) }
       <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
         <div className='bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10'>
           <form
@@ -36,7 +45,7 @@ export function Login() {
                   type='email'
                   autoComplete='email'
                   required
-                  onChange={ handleInputchange }
+                  onChange={ handleInputChange }
                   value={ formData.email }
                   className='block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                 />
@@ -53,7 +62,7 @@ export function Login() {
                   type='password'
                   autoComplete='current-password'
                   required
-                  onChange={ handleInputchange }
+                  onChange={ handleInputChange }
                   value={ formData.password }
                   className='block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                 />

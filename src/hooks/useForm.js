@@ -3,7 +3,7 @@ import { useState } from 'react';
 function useForm(initialState = {}) {
   const [ formData, setForm ] = useState(initialState);
 
-  const handleInputchange = ({ target }) => {
+  const handleInputChange = ({ target }) => {
     setForm({
       ...formData,
       [ target.name ]: target.value,
@@ -14,7 +14,7 @@ function useForm(initialState = {}) {
     setForm(initialState);
   };
 
-  return { formData, handleInputchange, reset }
+  return { formData, handleInputChange, reset }
 }
 
 export default useForm;
