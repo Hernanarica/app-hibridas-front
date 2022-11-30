@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext, UserContext } from '../../state/context';
 import { loginService } from '../../services';
 import useForm from '../../hooks/useForm';
+import { toast } from 'react-toastify';
 
 export function Login() {
   const { state, login } = useContext(AuthContext);
@@ -23,19 +24,37 @@ export function Login() {
         login();
         setUser({ ...user, token });
         reset();
-        
+  
+        toast.success('Bienvenido!', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
         navigate('/', { replace: true });
+      } else {
+        toast.error(data.msg.msg, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
       
-      // TODO: Setear mensajes de error
     });
     
   }
 
   return (
     <div className='flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8'>
-      { JSON.stringify(state) }
-      { JSON.stringify(stateUser) }
       <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
         <div className='bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10'>
           <form
