@@ -3,18 +3,19 @@ import { Routes, Route } from 'react-router-dom';
 import { routesPathTypes } from '../types/routesPathTypes';
 import { UserContext } from '../state/context';
 import { Home, LayoutPublic, Login, Notes, Register } from '../views';
+import { AdminRouter, SubscriptorRouter } from './roles';
 
 export function AppRouter() {
   const { state } = useContext(UserContext);
   
   if (state.role === 'admin') {
     console.log('Eres admin 😎');
-    return <h1>Admin role</h1>
+    return <AdminRouter />;
   }
   
   if (state.role === 'user') {
     console.log('Eres user 🤔');
-    return <h1>User role</h1>
+    return <SubscriptorRouter />;
   }
   
   console.log('Eres un visitante 😏');

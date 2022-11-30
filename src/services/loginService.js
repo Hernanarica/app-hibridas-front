@@ -6,9 +6,9 @@ export function loginService(userData) {
     },
     body: JSON.stringify(userData),
   })
-    .then((res) => res.json())
-    .then((data) => data)
-    .catch((err) => {
+    .then(res => res.json())
+    .then(data => data)
+    .catch(err => {
       console.error(err);
     });
 }

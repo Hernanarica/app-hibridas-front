@@ -1,4 +1,4 @@
-export const navRoutes = [
+export const navUserRoutes = [
   {
     name: 'Inicio',
     path: '/',

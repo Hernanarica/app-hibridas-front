@@ -1,8 +1,15 @@
+import { Outlet } from 'react-router-dom';
+import { Footer, HeaderSubscriptor } from '../../components';
+
 export function LayoutSubscriptor() {
 
   return (
     <>
-      <h1>LayoutSubscriptor</h1>
+      <HeaderSubscriptor />
+      <main className="min-h-[calc(100vh-64px)]">
+        <Outlet />
+      </main>
+      <Footer />
     </>
   );
 }

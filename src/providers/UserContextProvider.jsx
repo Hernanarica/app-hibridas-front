@@ -18,6 +18,7 @@ export function UserContextProvider({ children }) {
 		dispatch({
 			type: 'setUser',
 			payload: {
+				token: formData.token,
 				name: formData.name,
 				lastname: formData.lastname,
 				email: formData.email,

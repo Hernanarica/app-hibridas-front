@@ -1,11 +1,13 @@
 import { useContext } from 'react';
-import useForm from '../../hooks/useForm';
-import { loginService } from '../../services';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext, UserContext } from '../../state/context';
+import { loginService } from '../../services';
+import useForm from '../../hooks/useForm';
 
 export function Login() {
   const { state, login } = useContext(AuthContext);
   const { state: stateUser, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
   const { formData, handleInputChange, reset } = useForm({
     email: '',
     password: '',
@@ -14,10 +16,18 @@ export function Login() {
   const handleSubmit = e => {
     e.preventDefault();
 
-    loginService(formData).then(({ user, token }) => {
-      login();
-      setUser(user);
-      reset();
+    loginService(formData).then(data => {
+      if (data?.status === 'success') {
+        const { user, token } = data;
+
+        login();
+        setUser({ ...user, token });
+        reset();
+        
+        navigate('/', { replace: true });
+      }
+      
+      // TODO: Setear mensajes de error
     });
     
   }
