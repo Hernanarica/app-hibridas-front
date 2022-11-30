@@ -1,7 +1,10 @@
+import { toast } from 'react-toastify';
 import useForm from "../../hooks/useForm";
 import { registerService } from "../../services";
+import { useNavigate } from 'react-router-dom';
 
 export function Register() {
+  const navigate = useNavigate();
   const { formData, handleInputChange, reset } = useForm({
     name: '',
     lastname: '',
@@ -12,8 +15,40 @@ export function Register() {
   const handleSubmit = e => {
     e.preventDefault();
 
-    registerService(formData);
+    registerService(formData).then(r => {
+      console.log(r);
+      
+      if (r?.status === 'error') {
+        toast.error(r.msg, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      } else {
+        reset();
+  
+        toast.success('Usuario creado, inicia sesion', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+  
+        navigate('/iniciar-sesion');
+      }
+      
+    });
   }
+  
   return (
     <div className='flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8'>
       <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
@@ -98,6 +133,7 @@ export function Register() {
                   type='password'
                   autoComplete='current-password'
                   required
+                  minLength="8"
                   onChange={ handleInputChange }
                   value={ formData.password }
                   className='block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
