@@ -13,7 +13,7 @@ export const navAdminRoutes = [
 	},
 	{
 		name: 'Dashboard',
-		path: '/',
+		path: '/dashboard',
 		end: '/',
 		component: '',
 	},

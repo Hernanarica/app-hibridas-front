@@ -16,7 +16,7 @@ export function App() {
         pauseOnHover
         theme="light"
       />
-      <AppRouter />;
+      <AppRouter />
     </>
   )
 }

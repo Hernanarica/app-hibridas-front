@@ -1,5 +1,5 @@
 import { Footer } from '../../components/index.js';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { HeaderAdmin } from '../../components/Headers/HeaderAdmin';
 
 export function LayoutAdmin() {
