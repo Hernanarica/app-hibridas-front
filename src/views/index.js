@@ -11,3 +11,4 @@ export * from './Dashboard/UsuarioCrear';
 export * from './Dashboard/UsuarioEditar';
 export * from './Dashboard/PostCrear';
 export * from './Dashboard/PostEditar';
+export * from './Dashboard/Dashboard';

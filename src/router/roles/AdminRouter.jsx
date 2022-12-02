@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { Home, LayoutAdmin, Notes, PostCrear, PostEditar, UsuarioCrear, UsuarioEditar, Usuarios } from '../../views';
+import { Dashboard, Home, LayoutAdmin, Notes, PostCrear, PostEditar, UsuarioCrear, UsuarioEditar, Usuarios } from '../../views';
 import { routesPathTypes } from '../../types/routesPathTypes.js';
 import { LayoutDashboard } from '../../views/Layouts/LayoutDashboard';
 import { Post } from '../../views/Dashboard/Post';
@@ -13,7 +13,7 @@ export function AdminRouter() {
       </Route>
   
       <Route path="dashboard" element={ <LayoutDashboard /> }>
-        <Route index element={ <h1>Dashboard</h1> } />
+        <Route index element={ <Dashboard /> } />
     
         <Route path="usuarios">
           <Route index element={ <Usuarios /> } />
