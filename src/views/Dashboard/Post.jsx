@@ -1,11 +1,31 @@
 import { Link } from 'react-router-dom';
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline/index.js';
+import { useEffect, useState } from 'react';
+import { postDeleteService, postGetAllService } from '../../services';
 
 const people = [
 	{ name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
 ]
 
 export function Post() {
+	const [ posts, setPosts ] = useState([]);
+	
+	useEffect(() => {
+		postGetAllService().then(data => {
+			setPosts(data)
+		}).catch(err => {
+			throw new Error(err);
+		})
+	}, []);
+	
+	const handleDeletePost = (id) => {
+		postDeleteService(id).then(r => {
+			console.log(r);
+		}).catch(err => {
+			throw new Error(err);
+		})
+	}
+	
 	return (
 		<div className="px-4 sm:px-6 lg:p-8">
 			<div className="sm:flex sm:items-center">
@@ -31,16 +51,10 @@ export function Post() {
 								<thead className="bg-gray-50">
 									<tr>
 										<th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-											Nombre
+											Titulo
 										</th>
 										<th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-											Lastname
-										</th>
-										<th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-											Email
-										</th>
-										<th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-											Rol
+											Fecha de creacion
 										</th>
 										<th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
 											<span className="sr-only">Editar</span>
@@ -51,14 +65,12 @@ export function Post() {
 									</tr>
 								</thead>
 								<tbody className="divide-y divide-gray-200 bg-white">
-									{people.map((person) => (
-										<tr key={person.email}>
+									{posts.map(post => (
+										<tr key={post._id}>
 											<td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-												{person.name}
+												{post.title}
 											</td>
-											<td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.title}</td>
-											<td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.email}</td>
-											<td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.role}</td>
+											<td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{post.created}</td>
 											<td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
 												<Link
 													to="editar-post"
@@ -69,13 +81,13 @@ export function Post() {
 												</Link>
 											</td>
 											<td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-												<Link
-													to="eliminar-post"
+												<button
 													className="inline-flex items-center rounded-md border border-transparent bg-red-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+													onClick={ () => handleDeletePost(post._id) }
 												>
 													<TrashIcon className="-ml-0.5 mr-2 h-4 w-4" aria-hidden="true" />
 													Eliminar
-												</Link>
+												</button>
 											</td>
 										</tr>
 									))}
