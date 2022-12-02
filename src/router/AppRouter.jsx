@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { routesPathTypes } from '../types/routesPathTypes';
 import { UserContext } from '../state/context';
-import { Home, LayoutPublic, Login, Notes, Register } from '../views';
+import { Home, LayoutPublic, Login, Notes, NotFound, Register } from '../views';
 import { AdminRouter, SubscriptorRouter } from './roles';
 
 export function AppRouter() {
@@ -30,6 +30,8 @@ export function AppRouter() {
           <Route path={ routesPathTypes.register } element={ <Register /> } />
 
         </Route>
+  
+        <Route path="*" element={ <NotFound /> } />
       </Routes>
     </>
   );

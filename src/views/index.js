@@ -12,3 +12,4 @@ export * from './Dashboard/UsuarioEditar';
 export * from './Dashboard/PostCrear';
 export * from './Dashboard/PostEditar';
 export * from './Dashboard/Dashboard';
+export * from './NotFound/NotFound';
