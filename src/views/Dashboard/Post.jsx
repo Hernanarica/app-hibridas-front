@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline/index.js';
 import { useEffect, useState } from 'react';
 import { postDeleteService, postGetAllService } from '../../services';
+import { toast } from 'react-toastify';
 
 const people = [
 	{ name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
@@ -21,6 +22,17 @@ export function Post() {
 	const handleDeletePost = (id) => {
 		postDeleteService(id).then(r => {
 			console.log(r);
+			
+			toast.success('Post eliminado', {
+				position: "top-right",
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "light",
+			});
 		}).catch(err => {
 			throw new Error(err);
 		})
