@@ -73,7 +73,7 @@ export function Post() {
 											<td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{post.created}</td>
 											<td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
 												<Link
-													to="editar-post"
+													to={ `editar-post${ post._id }` }
 													className="inline-flex items-center rounded-md border border-transparent bg-blue-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
 												>
 													<PencilIcon className="-ml-0.5 mr-2 h-4 w-4" aria-hidden="true" />

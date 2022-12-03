@@ -14,7 +14,7 @@ function useForm(initialState = {}) {
     setForm(initialState);
   };
 
-  return { formData, handleInputChange, reset }
+  return { formData, handleInputChange, reset, setForm }
 }
 
 export default useForm;

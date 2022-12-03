@@ -36,9 +36,7 @@ export function PostCrear() {
 	
 	return (
 		<div className="p-4">
-			
 			<h2 className="text-2xl font-medium">Crea un posts</h2>
-			
 			<div className="mt-4">
 				<Link
 					to="/dashboard/posts"
@@ -48,7 +46,6 @@ export function PostCrear() {
 					Volver
 				</Link>
 			</div>
-			
 			<form
 				action="#"
 				method="POST"

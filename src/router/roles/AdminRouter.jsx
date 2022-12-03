@@ -25,7 +25,7 @@ export function AdminRouter() {
         <Route path="posts">
           <Route index element={ <Post /> } />
           <Route path="crear-post" element={ <PostCrear /> } />
-          <Route path="editar-post" element={ <PostEditar /> } />
+          <Route path="editar-post:id" element={ <PostEditar /> } />
           <Route path="eliminar-post" element={ <h1>Eliminar Posts, pasar ID</h1> } />
         </Route>
   
