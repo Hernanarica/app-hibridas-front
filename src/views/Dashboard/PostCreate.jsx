@@ -3,11 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { ChevronLeftIcon } from '@heroicons/react/24/outline/index.js';
 import useForm from '../../hooks/useForm.js';
-import { PostsContext } from '../../state/context/index.js';
+import { PostsContext } from '../../state/context';
+import { postCreateService } from '../../services';
 
 export function PostCreate() {
 	const navigate = useNavigate();
-	const { addPost } = useContext(PostsContext);
 	const { formData: { title, text }, handleInputChange } = useForm({
 		title: '',
 		text: '',
@@ -16,19 +16,21 @@ export function PostCreate() {
 	const handleSubmit = e => {
 		e.preventDefault();
 		
-		addPost({ title, text });
-		
-		navigate('/dashboard/posts');
-		
-		toast.success('Post creado', {
-			position: "top-right",
-			autoClose: 5000,
-			hideProgressBar: false,
-			closeOnClick: true,
-			pauseOnHover: true,
-			draggable: true,
-			progress: undefined,
-			theme: "light",
+		postCreateService({ title, text }).then(r => {
+			navigate('/dashboard/posts');
+			
+			toast.success('Post creado', {
+				position: "top-right",
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "light",
+			});
+		}). catch(err => {
+			throw new Error(err);
 		});
 	};
 	

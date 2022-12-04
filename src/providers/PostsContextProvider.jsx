@@ -34,16 +34,16 @@ export function PostsContextProvider({ children }) {
 		});
 	};
 	
-	const addPost = (post) => {
-		postCreateService(post).then(r => {
-			dispatch({
-				type: 'add',
-				payload: post
-			});
-		}). catch(err => {
-			throw new Error(err);
-		})
-	};
+	// const addPost = (post) => {
+	// 	postCreateService(post).then(r => {
+	// 		dispatch({
+	// 			type: 'add',
+	// 			payload: post
+	// 		});
+	// 	}). catch(err => {
+	// 		throw new Error(err);
+	// 	})
+	// };
 	
 	const updatePost = (post, id) => {
 		postUpdateService(post, id).then(r => {
@@ -63,7 +63,7 @@ export function PostsContextProvider({ children }) {
 		posts,
 		getAllPosts,
 		deletePost,
-		addPost,
+		// addPost,
 		updatePost
 	}
 	

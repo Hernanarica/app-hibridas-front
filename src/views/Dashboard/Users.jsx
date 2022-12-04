@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { PlusIcon, TrashIcon } from '@heroicons/react/24/outline/index.js';
+import { TrashIcon } from '@heroicons/react/24/outline/index.js';
 import { deleteUserService, getAllUsersService } from '../../services';
 
 export function Users() {

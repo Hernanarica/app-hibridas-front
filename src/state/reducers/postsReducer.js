@@ -5,8 +5,8 @@ function postsReducer(state = initialState, action) {
 		case 'getAll':
 			return action.payload;
 
-		case 'add':
-			return [ ...state, action.payload ];
+		// case 'add':
+		// 	return [ ...state, action.payload ];
 			
 		case 'update':
 			return state.map(post => {
