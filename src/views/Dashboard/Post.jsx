@@ -1,41 +1,25 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline/index.js';
-import { useEffect, useState } from 'react';
-import { postDeleteService, postGetAllService } from '../../services';
 import { toast } from 'react-toastify';
-
-const people = [
-	{ name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
-]
+import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline/index.js';
+import { PostsContext } from '../../state/context';
 
 export function Post() {
-	const [ posts, setPosts ] = useState([]);
-	
-	useEffect(() => {
-		postGetAllService().then(data => {
-			setPosts(data)
-		}).catch(err => {
-			throw new Error(err);
-		})
-	}, []);
+	const { posts, deletePost } = useContext(PostsContext);
 	
 	const handleDeletePost = (id) => {
-		postDeleteService(id).then(r => {
-			console.log(r);
-			
-			toast.success('Post eliminado', {
-				position: "top-right",
-				autoClose: 5000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: undefined,
-				theme: "light",
-			});
-		}).catch(err => {
-			throw new Error(err);
-		})
+		deletePost(id);
+		
+		toast.success('Post eliminado', {
+			position: "top-right",
+			autoClose: 5000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: "light",
+		});
 	}
 	
 	return (

@@ -1,4 +1,4 @@
-export function UsuarioCrear() {
+export function UserCreate() {
 	return (
 		<>
 			<h2>UsuarioCrear</h2>

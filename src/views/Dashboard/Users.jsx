@@ -5,7 +5,7 @@ const people = [
 	{ name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
 ]
 
-export function Usuarios() {
+export function Users() {
 	return (
 		<div className="px-4 sm:px-6 lg:p-8">
 			<div className="sm:flex sm:items-center">

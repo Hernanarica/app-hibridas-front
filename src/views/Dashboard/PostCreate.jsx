@@ -1,50 +1,35 @@
-import { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { ChevronLeftIcon } from '@heroicons/react/24/outline/index.js';
-import { postGetByIdService, postUpdateService } from '../../services';
 import useForm from '../../hooks/useForm.js';
+import { PostsContext } from '../../state/context/index.js';
 
-export function PostEditar() {
-	const { id } = useParams();
+export function PostCreate() {
 	const navigate = useNavigate();
-	const { formData: { title, text }, handleInputChange, setForm } = useForm({
+	const { addPost } = useContext(PostsContext);
+	const { formData: { title, text }, handleInputChange } = useForm({
 		title: '',
 		text: '',
 	});
 	
-	useEffect(() => {
-		postGetByIdService(id).then(r => {
-			setForm({
-				title: r.title,
-				text: r.text,
-			})
-		}).catch(err => {
-			throw new Error(err);
-		})
-	}, []);
-	
 	const handleSubmit = e => {
 		e.preventDefault();
-
-		postUpdateService({ title, text }, id).then(r => {
-			console.log(r);
-
-			navigate('/dashboard/posts');
-
-			toast.success('Post editado', {
-				position: "top-right",
-				autoClose: 5000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: undefined,
-				theme: "light",
-			});
-		}). catch(err => {
-			throw new Error(err);
-		})
+		
+		addPost({ title, text });
+		
+		navigate('/dashboard/posts');
+		
+		toast.success('Post creado', {
+			position: "top-right",
+			autoClose: 5000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: "light",
+		});
 	};
 	
 	return (
