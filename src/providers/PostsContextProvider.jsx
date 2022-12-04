@@ -2,16 +2,15 @@ import { useEffect, useReducer } from 'react';
 import { PostsContext } from '../state/context';
 import { postsReducer } from '../state/reducers';
 import { postCreateService, postDeleteService, postGetAllService, postUpdateService } from '../services';
-import { toast } from 'react-toastify';
 
 const initialState = [];
 
 export function PostsContextProvider({ children }) {
 	const [ posts, dispatch ] = useReducer(postsReducer, initialState);
 	
-	useEffect(() => {
-		getAllPosts();
-	},[]);
+	// useEffect(() => {
+	// 	getAllPosts();
+	// },[]);
 	
 	const getAllPosts = () => {
 		postGetAllService().then(data => {
@@ -62,6 +61,7 @@ export function PostsContextProvider({ children }) {
 	
 	const value = {
 		posts,
+		getAllPosts,
 		deletePost,
 		addPost,
 		updatePost

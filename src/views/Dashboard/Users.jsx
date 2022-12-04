@@ -1,11 +1,39 @@
-import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline/index.js';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
-const people = [
-	{ name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
-]
+import { toast } from 'react-toastify';
+import { PlusIcon, TrashIcon } from '@heroicons/react/24/outline/index.js';
+import { deleteUserService, getAllUsersService } from '../../services';
 
 export function Users() {
+	const [ users, setUsers ] = useState([]);
+	
+	useEffect(() => {
+		getAllUsersService().then(res => {
+			setUsers(res);
+		});
+	}, []);
+	
+	const handleDeleteUser = (id) => {
+		deleteUserService(id).then(res => {
+			setUsers(oldState => oldState.filter(user => user._id !== id));
+			
+			toast.success('Usuario eliminado', {
+				position: "top-right",
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "light",
+			});
+		});
+	};
+	
+	if (users.length === 0) {
+		return <h1>Loading...</h1>
+	}
+	
 	return (
 		<div className="px-4 sm:px-6 lg:p-8">
 			<div className="sm:flex sm:items-center">
@@ -43,39 +71,27 @@ export function Users() {
 											Rol
 										</th>
 										<th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
-											<span className="sr-only">Editar</span>
-										</th>
-										<th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
 											<span className="sr-only">Eliminar</span>
 										</th>
 									</tr>
 								</thead>
 								<tbody className="divide-y divide-gray-200 bg-white">
-									{people.map((person) => (
-										<tr key={person.email}>
+									{users.map((user) => (
+										<tr key={user._id}>
 											<td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-												{person.name}
+												{user.name}
 											</td>
-											<td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.title}</td>
-											<td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.email}</td>
-											<td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.role}</td>
+											<td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{user.lastname}</td>
+											<td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{user.email}</td>
+											<td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{user.role}</td>
 											<td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-												<Link
-													to="editar-usuario"
-													className="inline-flex items-center rounded-md border border-transparent bg-blue-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-												>
-													<PencilIcon className="-ml-0.5 mr-2 h-4 w-4" aria-hidden="true" />
-													Editar
-												</Link>
-											</td>
-											<td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-												<Link
-													to="eliminar-usuario"
+												<button
 													className="inline-flex items-center rounded-md border border-transparent bg-red-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+													onClick={ () => handleDeleteUser(user._id) }
 												>
 													<TrashIcon className="-ml-0.5 mr-2 h-4 w-4" aria-hidden="true" />
 													Eliminar
-												</Link>
+												</button>
 											</td>
 										</tr>
 									))}

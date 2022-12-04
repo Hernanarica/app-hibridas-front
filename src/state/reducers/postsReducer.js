@@ -3,7 +3,7 @@ const initialState = [];
 function postsReducer(state = initialState, action) {
 	switch (action.type) {
 		case 'getAll':
-			return [ ...action.payload ];
+			return action.payload;
 
 		case 'add':
 			return [ ...state, action.payload ];

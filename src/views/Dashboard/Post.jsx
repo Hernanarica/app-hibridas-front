@@ -1,11 +1,15 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline/index.js';
 import { PostsContext } from '../../state/context';
 
 export function Post() {
-	const { posts, deletePost } = useContext(PostsContext);
+	const { posts, deletePost, getAllPosts } = useContext(PostsContext);
+	
+	useEffect(() => {
+		getAllPosts();
+	}, []);
 	
 	const handleDeletePost = (id) => {
 		deletePost(id);
