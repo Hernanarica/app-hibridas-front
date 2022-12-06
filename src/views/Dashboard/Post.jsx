@@ -26,6 +26,9 @@ export function Post() {
 		});
 	}
 	
+	if (posts.length === 0) {
+		return <h1>Loading</h1>
+	}
 	return (
 		<div className="px-4 sm:px-6 lg:p-8">
 			<div className="sm:flex sm:items-center">
