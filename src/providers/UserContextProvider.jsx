@@ -13,7 +13,7 @@ const init = () => JSON.parse(localStorage.getItem('userCredentials')) ?? initia
 
 export function UserContextProvider({ children }) {
 	const [ state, dispatch ] = useReducer(userReducer, initialState, init);
-	
+
 	const setUser = (formData) => {
 		dispatch({
 			type: 'setUser',
