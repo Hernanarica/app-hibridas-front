@@ -84,7 +84,7 @@ export function NoteDetail() {
 
         reset();
 
-        toast.success('Usuario creado, inicia sesion', {
+        toast.success('Comentario creado', {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,

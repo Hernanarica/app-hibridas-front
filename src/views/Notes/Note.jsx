@@ -1,4 +1,31 @@
+import { toast } from "react-toastify";
+import { TrashIcon } from "@heroicons/react/24/outline";
+
 export function Note({ comments }) {
+
+  const handleDeleteNote = (id) => {
+    console.log('Deleting...', id);
+
+    fetch(`http://localhost:9001/api/comment/delete-comment/${ id }`, {
+      method: 'DELETE'
+    }).then(res => {
+      console.log(res);
+
+      toast.success('Comentario eliminado', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }).catch(err => {
+      throw new Error(err);
+    })
+  }
+
   return (
     <>
       {
@@ -8,8 +35,10 @@ export function Note({ comments }) {
               <p>{ comment.text }</p>
             </div>
             <div className='flex items-center gap-2'>
-              <div className='block w-10 h-10 bg-gray-600 rounded-full'></div>
-              <span>{ comment.date }</span>
+              <span className="text-sm text-gray-500">{ comment.date }</span>
+              <button className="p-1" onClick={ () => handleDeleteNote(comment._id) }>
+                <TrashIcon className="h-4 w-4 text-red-600" />
+              </button>
             </div>
           </div>
         ))
