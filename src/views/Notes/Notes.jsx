@@ -36,21 +36,21 @@ export function Notes() {
                 <div className='mt-2 block'>
                   <p className='text-xl font-semibold text-gray-900'>
                     { post.title }
-                  </p>
-                  <p className='mt-3 text-base text-gray-500'>
+                 </p>
+                 <p className='mt-3 text-base text-gray-500'>
                     { post.text }
-                  </p>
-                </div>
-                <div className='mt-3'>
-                  <Link
-                    to={ `/post/detalle/${ post._id }` }
-                    className='text-base font-semibold text-indigo-600 hover:text-indigo-500'
-                  >
+                 </p>
+              </div>
+              <div className='mt-3'>
+                 <Link
+                     to={ `/post/detalle/${ post._id }` }
+                     className='text-base font-semibold text-indigo-600 hover:text-indigo-500'
+                 >
                     Ver más
                   </Link>
                 </div>
               </div>
-            ))
+            )).reverse()
           }
         </div>
       </div>
