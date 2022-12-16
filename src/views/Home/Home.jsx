@@ -1,82 +1,9 @@
 export function Home() {
   return (
     <div className='isolate bg-white'>
-      <section>
-        <div className='relative px-6 lg:px-8'>
-          <div className='mx-auto max-w-3xl pt-20 pb-32 sm:pt-48 sm:pb-40'>
-            <div>
-              <div className='hidden sm:mb-8 sm:flex sm:justify-center'>
-                <div className='relative overflow-hidden rounded-full py-1.5 px-4 text-sm leading-6 ring-1 ring-gray-900/10 hover:ring-gray-900/20'>
-                  <span className='text-gray-600'>
-                    Announcing our next round of funding.{' '}
-                    <a href='#' className='font-semibold text-indigo-600'>
-                      <span className='absolute inset-0' aria-hidden='true' />
-                      Read more <span aria-hidden='true'>→</span>
-                    </a>
-                  </span>
-                </div>
-              </div>
-              <div>
-                <h1 className='text-4xl font-bold tracking-tight sm:text-center sm:text-6xl'>
-                  Data to enrich your online business
-                </h1>
-                <p className='mt-6 text-lg leading-8 text-gray-600 sm:text-center'>
-                  Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure
-                  qui lorem cupidatat commodo. Elit sunt amet fugiat veniam
-                  occaecat fugiat aliqua.
-                </p>
-                <div className='mt-8 flex gap-x-4 sm:justify-center'>
-                  <a
-                    href='#'
-                    className='inline-block rounded-lg bg-indigo-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-indigo-600 hover:bg-indigo-700 hover:ring-indigo-700'
-                  >
-                    Get started
-                    <span className='text-indigo-200' aria-hidden='true'>
-                      →
-                    </span>
-                  </a>
-                  <a
-                    href='#'
-                    className='inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-gray-900 ring-1 ring-gray-900/10 hover:ring-gray-900/20'
-                  >
-                    Live demo
-                    <span className='text-gray-400' aria-hidden='true'>
-                      →
-                    </span>
-                  </a>
-                </div>
-              </div>
-              <div className='absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]'>
-                <svg
-                  className='relative left-[calc(50%+3rem)] h-[21.1875rem] max-w-none -translate-x-1/2 sm:left-[calc(50%+36rem)] sm:h-[42.375rem]'
-                  viewBox='0 0 1155 678'
-                  fill='none'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    fill='url(#ecb5b0c9-546c-4772-8c71-4d3f06d544bc)'
-                    fillOpacity='.3'
-                    d='M317.219 518.975L203.852 678 0 438.341l317.219 80.634 204.172-286.402c1.307 132.337 45.083 346.658 209.733 145.248C936.936 126.058 882.053-94.234 1031.02 41.331c119.18 108.451 130.68 295.337 121.53 375.223L855 299l21.173 362.054-558.954-142.079z'
-                  />
-                  <defs>
-                    <linearGradient
-                      id='ecb5b0c9-546c-4772-8c71-4d3f06d544bc'
-                      x1='1155.49'
-                      x2='-78.208'
-                      y1='.177'
-                      y2='474.645'
-                      gradientUnits='userSpaceOnUse'
-                    >
-                      <stop stopColor='#9089FC' />
-                      <stop offset={1} stopColor='#FF80B5' />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+       {/*Titulo de un blog centrado al medio en grande y negrita  */}
+      <h1 className='text-center text-3xl font-bold'>THE ARIBET</h1>
+      
       <section>
         <div className='relative bg-white py-16 sm:py-24'>
           <div className='lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8'>
@@ -123,18 +50,17 @@ export function Home() {
                 <div className='relative overflow-hidden rounded-2xl pt-64 pb-10 shadow-xl'>
                   <img
                     className='absolute inset-0 h-full w-full object-cover'
-                    src='https://images.unsplash.com/photo-1521510895919-46920266ddb3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&fp-x=0.5&fp-y=0.6&fp-z=3&width=1440&height=1440&sat=-100'
+                    src='https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2022/12/avatar-the-way-of-water-cn-scaled.jpg?fit=1200%2C675&quality=60&strip=all&ssl=1'
                     alt='image'
                   />
                   <div className='absolute inset-0 bg-indigo-500 mix-blend-multiply' />
                   <div className='absolute inset-0 bg-gradient-to-t from-indigo-600 via-indigo-600 opacity-90' />
                   <div className='relative px-8'>
                     <div>
-                      <img
-                        className='h-12'
-                        src='https://tailwindui.com/img/logos/workcation.svg?color=white'
-                        alt='Workcation'
-                      />
+                       {/*titulo de avatar dos */}
+                        <h2 className='text-white text-3xl font-extrabold tracking-tight sm:text-4xl'>
+                           Avatar: The Way of Water
+                        </h2>
                     </div>
                     <blockquote className='mt-8'>
                       <div className='relative text-lg font-medium text-white md:flex-grow'>
@@ -147,14 +73,12 @@ export function Home() {
                           <path d='M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z' />
                         </svg>
                         <p className='relative'>
-                          Tincidunt integer commodo, cursus etiam aliquam neque,
-                          et. Consectetur pretium in volutpat, diam. Montes,
-                          magna cursus nulla feugiat dignissim id lobortis amet.
+                           ‘Avatar 2: el sentido del agua’, crítica: un triunfo visual, no tanto argumental, que hará historia
                         </p>
                       </div>
                       <footer className='mt-4'>
                         <p className='text-base font-semibold text-indigo-200'>
-                          Sarah Williams, CEO at Workcation
+                           por Aglaia Berlutti 15 de diciembre de 2022
                         </p>
                       </footer>
                     </blockquote>
@@ -166,97 +90,103 @@ export function Home() {
               {/* Content area */}
               <div className='pt-12 sm:pt-16 lg:pt-20'>
                 <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
-                  On a mission to empower teams
+                   Pandora abre sus tierras al asombro
                 </h2>
                 <div className='mt-6 space-y-6 text-gray-500'>
                   <p className='text-lg'>
-                    Sagittis scelerisque nulla cursus in enim consectetur quam.
-                    Dictum urna sed consectetur neque tristique pellentesque.
-                    Blandit amet, sed aenean erat arcu morbi. Cursus faucibus
-                    nunc nisl netus morbi vel porttitor vitae ut. Amet vitae
-                    fames senectus vitae.
+                     En Avatar 2: el sentido del agua, el tiempo es importante. Diez años han transcurrido desde que Jake Sully (Sam Worthington) recibiera el prodigio de Eywa en el Árbol de la Vida. Su identidad humana desapareció o, mejor dicho, evolucionó a una comunión total con Pandora.
+   
+                     Su mirada es la de un Na’vi y esa es la gran revelación que el argumento escrito por James Cameron, Rick Jaffa y Amanda Silver deja clara. El espíritu aventurero del personaje es un reflejo de su planeta adoptivo.
+                     
                   </p>
                   <p className='text-base leading-7'>
-                    Sollicitudin tristique eros erat odio sed vitae, consequat
-                    turpis elementum. Lorem nibh vel, eget pretium arcu vitae.
-                    Eros eu viverra donec ut volutpat donec laoreet quam urna.
-                    Sollicitudin tristique eros erat odio sed vitae, consequat
-                    turpis elementum. Lorem nibh vel, eget pretium arcu vitae.
-                    Eros eu viverra donec ut volutpat donec laoreet quam urna.
+                     Los primeros minutos de la gran épica ecológica de James Cameron dejan claro de inmediato que esta largamente esperada secuela es una experiencia. Antes que un recorrido, una historia o incluso una exploración a un nuevo mundo, Avatar 2: el sentido del agua es una osadía visual que hipnotiza a un grado abrumador. El nivel de realismo y detalle sobrepasa toda posible predicción sobre el trabajo de Cameron y convierte la película en puro poder narrativo.
                   </p>
-                  <p className='text-base leading-7'>
-                    Rhoncus nisl, libero egestas diam fermentum dui. At quis
-                    tincidunt vel ultricies. Vulputate aliquet velit faucibus
-                    semper. Pellentesque in venenatis vestibulum consectetur
-                    nibh id. In id ut tempus egestas. Enim sit aliquam nec, a.
-                    Morbi enim fermentum lacus in. Viverra.
-                  </p>
-                </div>
-              </div>
-              {/* Stats section */}
-              <div className='mt-10'>
-                <dl className='grid grid-cols-2 gap-x-4 gap-y-8'>
-                  <div className='border-t-2 border-gray-100 pt-6'>
-                    <dt className='text-base font-medium text-gray-500'>
-                      Founded
-                    </dt>
-                    <dd className='text-3xl font-bold tracking-tight text-gray-900'>
-                      2021
-                    </dd>
-                  </div>
-                  <div className='border-t-2 border-gray-100 pt-6'>
-                    <dt className='text-base font-medium text-gray-500'>
-                      Employees
-                    </dt>
-                    <dd className='text-3xl font-bold tracking-tight text-gray-900'>
-                      5
-                    </dd>
-                  </div>
-                  <div className='border-t-2 border-gray-100 pt-6'>
-                    <dt className='text-base font-medium text-gray-500'>
-                      Beta Users
-                    </dt>
-                    <dd className='text-3xl font-bold tracking-tight text-gray-900'>
-                      521
-                    </dd>
-                  </div>
-                  <div className='border-t-2 border-gray-100 pt-6'>
-                    <dt className='text-base font-medium text-gray-500'>
-                      Raised
-                    </dt>
-                    <dd className='text-3xl font-bold tracking-tight text-gray-900'>
-                      $25M
-                    </dd>
-                  </div>
-                </dl>
-                <div className='mt-10'>
-                  <a href='#' className='text-base font-medium text-indigo-600'>
-                    Learn more about how we're changing the world
-                    <span aria-hidden='true'> →</span>
-                  </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-
+       <section>
+          <div className='relative bg-white py-16 sm:py-24'>
+             <div className='lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8'>
+                
+                <div className='relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0'>
+                   {/* Content area */}
+                   <div className='pt-12 sm:pt-16 lg:pt-20'>
+                      <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
+                         Google no piensa lanzar un competidor de ChatGPT
+                      </h2>
+                      <div className='mt-6 space-y-6 text-gray-500'>
+                         <p className='text-lg'>
+                            La locura por ChatGPT es total, y tiene sus motivos. El chatbot potenciado por inteligencia artificial de OpenAI se ha convertido en EL tema de conversación durante las últimas semanas. Es por ello que, probablemente, hayas visto al menos una publicación en Twitter compartiendo las respuestas de esta peculiar herramienta, o hasta conversaciones completas con ella. Al punto tal de que muchos se han animado a vaticinar que podría reemplazar a los buscadores web convencionales, algo que a Google parece no hacerle demasiada gracia.
+                         </p>
+                         <p className='text-base leading-7'>
+                            De hecho, CNBC reporta que empleados de Google consultaron a los principales directivos de la compañía si no creían que el furor por ChatGPT era una "oportunidad perdida", considerando que ya disponen de LaMDA, un modelo de inteligencia artificial basado en el lenguaje natural. Sin embargo, los ejecutivos de Mountain View dejaron en claro que no piensan usar dicha tecnología para lanzar un competidor directo, al menos no en lo inmediato. ¿El motivo? Que la compañía afronta un altísimo "riesgo reputacional" y que debe actuar de un modo más conservador, comparado con una startup.
+                         </p>
+                      </div>
+                   </div>
+                </div>
+                <div className='relative sm:py-16 lg:py-0'>
+                   <div className='relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-none lg:px-0 lg:py-20'>
+                      <div className='relative overflow-hidden rounded-2xl pt-64 pb-10 shadow-xl'>
+                         <img
+                             className='absolute inset-0 h-full w-full object-cover'
+                             src='https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2021/10/google-inteligencia-artificial-2.jpg?fit=1200%2C750&quality=60&strip=all&ssl=1'
+                             alt='image'
+                         />
+                         <div className='absolute inset-0 bg-indigo-500 mix-blend-multiply' />
+                         <div className='absolute inset-0 bg-gradient-to-t from-indigo-600 via-indigo-600 opacity-90' />
+                         <div className='relative px-8'>
+                            <div>
+                               {/*titulo de avatar dos */}
+                               <h2 className='text-white text-3xl font-extrabold tracking-tight sm:text-4xl'>
+                                  Por qué Google no lanzará un competidor a ChatGPT
+                               </h2>
+                            </div>
+                            <blockquote className='mt-8'>
+                               <div className='relative text-lg font-medium text-white md:flex-grow'>
+                                  <svg
+                                      className='absolute top-0 left-0 h-8 w-8 -translate-x-3 -translate-y-2 transform text-indigo-400'
+                                      fill='currentColor'
+                                      viewBox='0 0 32 32'
+                                      aria-hidden='true'
+                                  >
+                                     <path d='M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z' />
+                                  </svg>
+                                  <p className='relative'>
+                                     El furor por ChatGPT, el chatbot potenciado por IA, ha llevado a muchos a pensar que en un futuro no muy cercano podrían reemplazar a los buscadores web convencionales. Google no lo cree así, y tiene sus motivos para no lanzar un competidor.
+                                  </p>
+                               </div>
+                               <footer className='mt-4'>
+                                  <p className='text-base font-semibold text-indigo-200'>
+                                     por Gabriel Erard 14 de diciembre de 2022
+                                  </p>
+                               </footer>
+                            </blockquote>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </section>
       <section>
         <div className='bg-white px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28'>
           <div className='relative mx-auto max-w-lg divide-y-2 divide-gray-200 lg:max-w-7xl'>
             <div>
               <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
-                Press
+                Newsletter
               </h2>
               <div className='mt-3 sm:mt-4 lg:grid lg:grid-cols-2 lg:items-center lg:gap-5'>
                 <p className='text-xl text-gray-500'>
-                  Get weekly articles in your inbox on how to grow your
-                  business.
+                   Recibe artículos semanales en tu bandeja de entrada sobre lo último en tecnología, ciencia, cultura y más.
                 </p>
                 <form className='mt-6 flex flex-col sm:flex-row lg:mt-0 lg:justify-end'>
                   <div>
                     <label htmlFor='email-address' className='sr-only'>
-                      Email address
+                     Correo electrónico
                     </label>
                     <input
                       id='email-address'
@@ -273,7 +203,7 @@ export function Home() {
                       type='button'
                       className='flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:inline-flex sm:w-auto'
                     >
-                      Notify me
+                      Notificarme
                     </button>
                   </div>
                 </form>
@@ -286,13 +216,10 @@ export function Home() {
                 </p>
                 <a href='#' className='mt-2 block'>
                   <p className='text-xl font-semibold text-gray-900'>
-                    Boost your conversion rate
+                     No confundas el hito histórico de la fusión nuclear con la fisión nuclear de Chernobyl
                   </p>
                   <p className='mt-3 text-base text-gray-500'>
-                    Illo sint voluptas. Error voluptates culpa eligendi. Hic vel
-                    totam vitae illo. Non aliquid explicabo necessitatibus unde.
-                    Sed exercitationem placeat consectetur nulla deserunt vel.
-                    Iusto corrupti dicta.
+                     La fisión nuclear ya se usa para obtener energía. La fusión nuclear está aún en pañales, pero tiene mucho potencial, sobre todo después del anuncio que se ha hecho recientemente desde Estados Unidos.
                   </p>
                 </a>
                 <div className='mt-3'>
@@ -300,7 +227,7 @@ export function Home() {
                     href='#'
                     className='text-base font-semibold text-indigo-600 hover:text-indigo-500'
                   >
-                    Read full story
+                    Leer más
                   </a>
                 </div>
               </div>
@@ -310,11 +237,10 @@ export function Home() {
                 </p>
                 <a href='#' className='mt-2 block'>
                   <p className='text-xl font-semibold text-gray-900'>
-                    How to use search engine optimization to drive sales
+                     El co-CEO de FTX delató a Sam Bankman-Fried días antes de que quebrara la empresa
                   </p>
                   <p className='mt-3 text-base text-gray-500'>
-                    Optio cum necessitatibus dolor voluptatum provident commodi
-                    et. Qui aperiam fugiat nemo cumque.
+                     Ryan Salame, co-CEO de FTX, se comunicó con las autoridades de Bahamas en los días previos a la bancarrota de la compañía para alertar sobre el movimiento de fondos de los usuarios hacia Alameda Research.
                   </p>
                 </a>
                 <div className='mt-3'>
@@ -322,7 +248,7 @@ export function Home() {
                     href='#'
                     className='text-base font-semibold text-indigo-600 hover:text-indigo-500'
                   >
-                    Read full story
+                    Leer más
                   </a>
                 </div>
               </div>
@@ -332,11 +258,10 @@ export function Home() {
                 </p>
                 <a href='#' className='mt-2 block'>
                   <p className='text-xl font-semibold text-gray-900'>
-                    Improve your customer experience
+                     Tesla estaría ultimando detalles para anunciar la construcción de una fábrica en México
                   </p>
                   <p className='mt-3 text-base text-gray-500'>
-                    Cupiditate maiores ullam eveniet adipisci in doloribus nulla
-                    minus. Voluptas iusto libero adipisci rem et corporis.
+                     Tesla habría elegido a Monterrey para construir su primera fábrica de coches en México. El anuncio sería inminente.
                   </p>
                 </a>
                 <div className='mt-3'>
@@ -344,7 +269,7 @@ export function Home() {
                     href='#'
                     className='text-base font-semibold text-indigo-600 hover:text-indigo-500'
                   >
-                    Read full story
+                    Leer más
                   </a>
                 </div>
               </div>
@@ -354,13 +279,10 @@ export function Home() {
                 </p>
                 <a href='#' className='mt-2 block'>
                   <p className='text-xl font-semibold text-gray-900'>
-                    Writing effective landing page copy
+                     Sony confirma cuándo lanzará ‘Spider-Man 2’ para PS5
                   </p>
                   <p className='mt-3 text-base text-gray-500'>
-                    Ipsum voluptates quia doloremque culpa qui eius. Id qui id
-                    officia molestias quaerat deleniti. Qui facere numquam autem
-                    libero quae cupiditate asperiores vitae cupiditate. Cumque
-                    id deleniti explicabo.
+                     ‘Spider-Man 2’, la esperada nueva entrega de la saga de Insomniac Games, ya tiene temporada de estreno confirmada por Sony.
                   </p>
                 </a>
                 <div className='mt-3'>
@@ -368,7 +290,7 @@ export function Home() {
                     href='#'
                     className='text-base font-semibold text-indigo-600 hover:text-indigo-500'
                   >
-                    Read full story
+                   Leer más
                   </a>
                 </div>
               </div>
