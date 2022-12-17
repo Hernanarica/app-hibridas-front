@@ -4,7 +4,7 @@ import { commentsReducer } from '../state/reducers';
 
 export function CommentsProvider({ children }) {
   const [ comments, dispatch ] = useReducer(commentsReducer, []);
-  const commentId = useId();
+  const commentId = new Date().getTime();
 
   const getAllComments = async (id) => {
     try {
@@ -51,10 +51,26 @@ export function CommentsProvider({ children }) {
     }
   }
 
+  const deleteComment = async (id) => {
+    try {
+      await fetch(`http://localhost:9001/api/comment/delete-comment/${ id }`, {
+        method: 'DELETE'
+      });
+
+      dispatch({
+        type: 'delete',
+        payload: id
+      });
+    } catch (error) {
+      throw new Error(err);
+    }
+  }
+
   const values = {
     comments,
     getAllComments,
-    createComment
+    createComment,
+    deleteComment
   }
 
   return (
