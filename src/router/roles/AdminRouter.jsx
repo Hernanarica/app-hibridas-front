@@ -3,6 +3,7 @@ import { Dashboard, Home, LayoutAdmin, Notes, NotFound, PostCreate, PostEdit, Us
 import { routesPathTypes } from '../../types/routesPathTypes.js';
 import { LayoutDashboard } from '../../views/Layouts/LayoutDashboard';
 import { Post } from '../../views/Dashboard/Post';
+import { CommentsProvider } from '../../providers/CommentsProvider';
 
 export function AdminRouter() {
   return (
@@ -10,7 +11,11 @@ export function AdminRouter() {
       <Route element={ <LayoutAdmin /> }>
         <Route path={ routesPathTypes.home } element={ <Home /> } />
         <Route path={ routesPathTypes.notes } element={ <Notes /> } />
-        <Route path="/post/detalle/:id" element={ <NoteDetail /> } />
+        <Route path="/post/detalle/:id" element={
+          <CommentsProvider>
+            <NoteDetail />
+          </CommentsProvider>
+        } />
       </Route>
 
       <Route path="dashboard" element={ <LayoutDashboard /> }>

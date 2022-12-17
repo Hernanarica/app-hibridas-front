@@ -4,6 +4,7 @@ import { routesPathTypes } from '../types/routesPathTypes';
 import { UserContext } from '../state/context';
 import { Home, LayoutPublic, Login, NoteDetail, Notes, NotFound, Register } from '../views';
 import { AdminRouter, SubscriptorRouter } from './roles';
+import { CommentsProvider } from '../providers/CommentsProvider';
 
 export function AppRouter() {
   const { state } = useContext(UserContext);
@@ -28,7 +29,11 @@ export function AppRouter() {
           <Route path={ routesPathTypes.notes } element={ <Notes /> } />
           <Route path={ routesPathTypes.login } element={ <Login /> } />
           <Route path={ routesPathTypes.register } element={ <Register /> } />
-          <Route path="/post/detalle/:id" element={ <NoteDetail /> } />
+          <Route path="/post/detalle/:id" element={
+            <CommentsProvider>
+              <NoteDetail />
+            </CommentsProvider>
+           } />
 
         </Route>
 

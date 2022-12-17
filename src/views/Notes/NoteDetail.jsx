@@ -3,33 +3,28 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { ChatBubbleBottomCenterIcon, ChevronLeftIcon } from '@heroicons/react/24/outline/index.js';
 import useForm from '../../hooks/useForm';
-import { UserContext } from '../../state/context';
+import { CommentsContext, UserContext } from '../../state/context';
 import { Note } from './Note';
 
 export function NoteDetail() {
-  const { state } = useContext(UserContext);
-  const { id } = useParams();
+  const { comments, getAllComments, createComment } = useContext(CommentsContext);
+  const { state: { _id: idUser } } = useContext(UserContext);
+  const { id: idPost } = useParams();
   const navigate = useNavigate();
   const [ post, setPost ] = useState({});
-  const [ comments, setComments ] = useState([]);
   const { formData: { comment }, handleInputChange, reset } = useForm({
     comment: ''
   });
 
   useEffect(() => {
 
-    getpostbyId(id)
+    getpostbyId(idPost)
       .then(res => {
         setPost(res);
       });
 
       setTimeout(() => {
-
-        getAllComments(id)
-          .then(res => {
-            setComments(res);
-          });
-
+        getAllComments(idPost);
     }, 500);
 
   }, []);
@@ -43,44 +38,11 @@ export function NoteDetail() {
     }
   };
 
-  const getAllComments = async (id) => {
-    try {
-      const fetchData = await fetch(`http://localhost:9001/api/comments/${ id }`);
-      return await fetchData.json();
-    } catch (error) {
-      throw new Error(error);
-    }
-  };
-
-  const createComment = async (comment) => {
-    try {
-
-      const data = {
-        text: comment,
-        "fk_post": id,
-        "fk_user": state._id
-      }
-
-      const fetchData = await fetch('http://localhost:9001/api/comment/create-comment', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-      });
-
-      return await fetchData.json();
-    } catch (error) {
-      throw new Error(error);
-    }
-  }
-
   const handleSubmit = e => {
     e.preventDefault();
 
-    createComment(comment)
+    createComment(comment, idPost, idUser)
       .then(res => {
-        console.log(res);
 
         reset();
 
@@ -99,7 +61,6 @@ export function NoteDetail() {
 
   return (
     <section className='w-full h-[calc(100vh-64px)]'>
-
       <div className='p-2'>
         <button
           type="button"
@@ -110,7 +71,6 @@ export function NoteDetail() {
           Volver
         </button>
       </div>
-
       <div className='flex h-full'>
         <div className='w-8/12 p-2'>
           <h2 className='text-4xl font-medium'>{ post.title }</h2>
@@ -118,7 +78,6 @@ export function NoteDetail() {
           <p>{ post.text }</p>
           {/* { JSON.stringify(post) } */}
         </div>
-
         <div className='flex flex-col gap-5 px-2 pt-2 w-4/12'>
           <div>
             <form
@@ -156,7 +115,6 @@ export function NoteDetail() {
               }
             </div>
           </div>
-
         </div>
       </div>
     </section>
