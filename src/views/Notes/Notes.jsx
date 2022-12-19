@@ -21,7 +21,7 @@ export function Notes() {
     }
   }
 
-  if(posts.length < 1) return <h1>Loading...</h1>
+  
 
   return (
     <div className='bg-white px-4 pt-16 pb-20 sm:px-6 lg:px-8'>
@@ -50,7 +50,7 @@ export function Notes() {
                   </Link>
                 </div>
               </div>
-            )).reverse()
+            ))
           }
         </div>
       </div>
