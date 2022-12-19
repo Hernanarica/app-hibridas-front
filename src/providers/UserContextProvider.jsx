@@ -27,6 +27,7 @@ export function UserContextProvider({ children }) {
 		});
 		
 		localStorage.setItem('userCredentials', JSON.stringify(formData));
+		localStorage.setItem('token', formData.token);
 	};
 	
 	const clearUser = (formData) => {

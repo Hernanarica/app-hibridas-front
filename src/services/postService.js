@@ -17,8 +17,10 @@ export function postUpdateService(data, id) {
 	return fetch(`${ import.meta.env.VITE_BASE_URL_API }/post/${ id }`, {
 		method: 'PUT',
 		headers: {
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
+			'auth-token': `Bearer ${ localStorage.getItem('token') }`
 		},
+		
 		body: JSON.stringify(data)
 	})
 		.then(res => res.json())
@@ -39,7 +41,8 @@ export function postGetAllService() {
 
 export function postDeleteService(id) {
 	return fetch(`${ import.meta.env.VITE_BASE_URL_API }/post/${ id }`, {
-		method: 'DELETE'
+		method: 'DELETE',
+		'auth-token': `Bearer ${ localStorage.getItem('token') }`
 	})
 		.then(res => res.json())
 		.then(data => data)
