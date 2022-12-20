@@ -25,24 +25,24 @@ export function UserContextProvider({ children }) {
 				role: formData.role
 			}
 		});
-		
+
 		localStorage.setItem('userCredentials', JSON.stringify(formData));
 	};
-	
+
 	const clearUser = (formData) => {
 		dispatch({
 			type: 'clearUser',
 		});
-		
+
 		localStorage.removeItem('userCredentials');
 	};
-	
+
 	const value = {
 		state,
 		setUser,
 		clearUser
 	};
-	
+
 	return (
 		<UserContext.Provider value={ value }>
 			{ children }

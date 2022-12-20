@@ -2,7 +2,8 @@ export function postCreateService(data) {
 	return fetch(`${ import.meta.env.VITE_BASE_URL_API }/post/create`, {
 		method: 'POST',
 		headers: {
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
+			'auth-token': JSON.parse(localStorage.getItem('userCredentials')).token,
 		},
 		body: JSON.stringify(data)
 	})
@@ -17,7 +18,8 @@ export function postUpdateService(data, id) {
 	return fetch(`${ import.meta.env.VITE_BASE_URL_API }/post/${ id }`, {
 		method: 'PUT',
 		headers: {
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
+			'auth-token': JSON.parse(localStorage.getItem('userCredentials')).token,
 		},
 		body: JSON.stringify(data)
 	})
@@ -39,12 +41,16 @@ export function postGetAllService() {
 
 export function postDeleteService(id) {
 	return fetch(`${ import.meta.env.VITE_BASE_URL_API }/post/${ id }`, {
-		method: 'DELETE'
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json',
+			'auth-token': JSON.parse(localStorage.getItem('userCredentials')).token,
+		},
 	})
 		.then(res => res.json())
 		.then(data => data)
 		.catch(err => {
-			console.error(err);
+			throw new Error(err);
 		});
 }
 

@@ -35,6 +35,7 @@ export function CommentsProvider({ children }) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'auth-token': JSON.parse(localStorage.getItem('userCredentials')).token,
         },
         body: JSON.stringify(data)
       });
@@ -54,7 +55,11 @@ export function CommentsProvider({ children }) {
   const deleteComment = async (id) => {
     try {
       await fetch(`http://localhost:9001/api/comment/delete-comment/${ id }`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'auth-token': JSON.parse(localStorage.getItem('userCredentials')).token,
+        },
       });
 
       dispatch({
