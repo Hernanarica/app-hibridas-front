@@ -50,7 +50,7 @@ export function Notes() {
                   </Link>
                 </div>
               </div>
-            )).reverse()
+            ))
           }
         </div>
       </div>
