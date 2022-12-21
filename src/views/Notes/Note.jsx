@@ -7,6 +7,7 @@ import { CommentsContext } from "../../state/context";
 export function Note({ comments }) {
   const { deleteComment } = useContext(CommentsContext);
   const { state } = useContext(UserContext);
+  console.log(state);
 
   const handleDeleteNote = (id) => {
 

@@ -12,7 +12,7 @@ export function PostEdit() {
 		title: '',
 		text: '',
 	});
-	
+
 	useEffect(() => {
 		postGetByIdService(id).then(r => {
 			setForm({
@@ -23,14 +23,14 @@ export function PostEdit() {
 			throw new Error(err);
 		})
 	}, []);
-	
+
 	const handleSubmit = e => {
 		e.preventDefault();
-		
+
 		postUpdateService({ title, text }, id).then(r => {
-			
+
 			navigate('/dashboard/posts');
-			
+
 			toast.success('Post editado', {
 				position: "top-right",
 				autoClose: 5000,
@@ -45,10 +45,10 @@ export function PostEdit() {
 			throw new Error(err);
 		})
 	};
-	
+
 	return (
 		<div className="p-4">
-			<h2 className="text-2xl font-medium">Crea un posts</h2>
+			<h2 className="text-2xl font-medium">Edita un post</h2>
 			<div className="mt-4">
 				<Link
 					to="/dashboard/posts"
@@ -60,7 +60,7 @@ export function PostEdit() {
 			</div>
 			<form
 				action="#"
-				method="POST"
+				method="PATCH"
 				onSubmit={ handleSubmit }
 			>
 				<div className="flex flex-col gap-2 mt-4">
@@ -91,7 +91,7 @@ export function PostEdit() {
 				<button
 					type="submit"
 					className="bg-indigo-600 text-white w-full py-2 rounded mt-4"
-				>Crear</button>
+				>Guardar</button>
 			</form>
 		</div>
 	);

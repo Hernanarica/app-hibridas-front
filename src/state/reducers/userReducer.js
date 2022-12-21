@@ -3,7 +3,8 @@ const initialState = {
 	name: null,
 	lastname: null,
 	email: null,
-	role: null
+	role: null,
+	'_id': null
 };
 
 function userReducer(state = initialState, action) {
@@ -12,7 +13,7 @@ function userReducer(state = initialState, action) {
 			return { ...action.payload };
 		case 'clearUser':
 			return { ...initialState };
-		
+
 		default:
 			return state;
 	}

@@ -3,10 +3,12 @@ import { userReducer } from '../state/reducers';
 import { UserContext } from '../state/context';
 
 const initialState = {
+	token: null,
 	name: null,
 	lastname: null,
 	email: null,
-	role: null
+	role: null,
+	'_id': null
 };
 
 const init = () => JSON.parse(localStorage.getItem('userCredentials')) ?? initialState;
@@ -22,7 +24,8 @@ export function UserContextProvider({ children }) {
 				name: formData.name,
 				lastname: formData.lastname,
 				email: formData.email,
-				role: formData.role
+				role: formData.role,
+				'_id': formData._id
 			}
 		});
 

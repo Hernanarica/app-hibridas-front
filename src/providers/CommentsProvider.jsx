@@ -25,7 +25,6 @@ export function CommentsProvider({ children }) {
 
   const createComment = async (comment, idPost, idUser) => {
     try {
-
       const data = {
         text: comment,
         "fk_post": idPost,

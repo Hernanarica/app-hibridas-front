@@ -16,7 +16,7 @@ export function postCreateService(data) {
 
 export function postUpdateService(data, id) {
 	return fetch(`${ import.meta.env.VITE_BASE_URL_API }/post/${ id }`, {
-		method: 'PUT',
+		method: 'PATCH',
 		headers: {
 			'Content-Type': 'application/json',
 			'auth-token': JSON.parse(localStorage.getItem('userCredentials')).token,

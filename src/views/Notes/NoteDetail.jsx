@@ -72,7 +72,8 @@ export function NoteDetail() {
         </button>
       </div>
       <div className='flex h-full'>
-        <div className='w-8/12 p-2'>
+        <div className='relative w-8/12 p-2 overflow-auto'>
+          <div className='sticky -top-2 w-full h-10 rotate-180 bg-gradient-to-t from-white'></div>
           <h2 className='text-4xl font-medium'>{ post.title }</h2>
           <hr className='my-2' />
           <p>{ post.text }</p>

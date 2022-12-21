@@ -38,7 +38,7 @@ export function Notes() {
                     { post.title }
                  </p>
                  <p className='mt-3 text-base text-gray-500'>
-                    { post.text }
+                    { post.text.slice(0, 250).concat('...') }
                  </p>
               </div>
               <div className='mt-3'>
