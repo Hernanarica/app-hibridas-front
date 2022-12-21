@@ -4,16 +4,17 @@ import { AuthContext, UserContext } from '../../state/context';
 
 export function NavItem({ routes }) {
   const { state, logout } = useContext(AuthContext);
+  const { state: { name } } = useContext(UserContext);
   const { clearUser } = useContext(UserContext);
   const navigate = useNavigate();
-  
+
   const handleLogout = () => {
     logout();
     clearUser();
-    
+
     navigate('/iniciar-sesion', { replace: true })
   };
-  
+
   return (
     <>
       {
@@ -28,8 +29,8 @@ export function NavItem({ routes }) {
           </li>
         ))
       }
-      
-      { state.isAuthenticated && <button onClick={ handleLogout }>Logout</button> }
+
+      { state.isAuthenticated && <button onClick={ handleLogout }>Logout ({ name })</button> }
     </>
   );
 }
