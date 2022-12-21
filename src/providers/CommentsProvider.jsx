@@ -1,6 +1,8 @@
 import { useReducer, useId } from 'react';
 import { CommentsContext } from '../state/context';
 import { commentsReducer } from '../state/reducers';
+import moment from 'moment/min/moment-with-locales';
+moment.locale('es-mx');
 
 export function CommentsProvider({ children }) {
   const [ comments, dispatch ] = useReducer(commentsReducer, []);
@@ -44,7 +46,10 @@ export function CommentsProvider({ children }) {
 
       dispatch({
         type: 'add',
-        payload: data
+        payload: {
+          ...data,
+          date: moment().format('LLL')
+        }
       });
 
     } catch (error) {

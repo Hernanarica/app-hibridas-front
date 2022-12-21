@@ -76,7 +76,6 @@ export function NoteDetail() {
           <h2 className='text-4xl font-medium'>{ post.title }</h2>
           <hr className='my-2' />
           <p>{ post.text }</p>
-          {/* { JSON.stringify(post) } */}
         </div>
         <div className='flex flex-col gap-5 px-2 pt-2 w-4/12'>
           <div>
@@ -104,7 +103,7 @@ export function NoteDetail() {
             <div className='sticky top-0 w-full h-10 rotate-180 bg-gradient-to-t from-white'></div>
             <div className='space-y-2'>
               {
-                comments.length <= 1 &&
+                comments.length < 1 &&
                 <div className='flex items-center justify-center gap-2 bg-indigo-600 py-2 rounded text-center font-medium text-white'>
                   <ChatBubbleBottomCenterIcon className='h-6 w-6'/>
                   Sin comentarios
