@@ -1,31 +1,44 @@
 import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline/index.js';
 import { PostsContext } from '../../state/context';
 
 export function Post() {
 	const { posts, deletePost, getAllPosts } = useContext(PostsContext);
-	
+
 	useEffect(() => {
 		getAllPosts();
 	}, []);
-	
+
 	const handleDeletePost = (id) => {
-		deletePost(id);
-		
-		toast.success('Post eliminado', {
-			position: "top-right",
-			autoClose: 5000,
-			hideProgressBar: false,
-			closeOnClick: true,
-			pauseOnHover: true,
-			draggable: true,
-			progress: undefined,
-			theme: "light",
-		});
+		Swal.fire({
+			title: 'Seguro que desea eliminar?',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#5a52e7',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'si, eliminar',
+			cancelButtonText: 'Cancelar'
+		}).then(result => {
+			if (result.isConfirmed) {
+				deletePost(id);
+
+				toast.success('Post eliminado', {
+					position: "top-right",
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+					theme: "light",
+				});
+			}
+		})
 	}
-	
+
 	if (posts.length === 0) {
 		return <h1>Loading</h1>
 	}

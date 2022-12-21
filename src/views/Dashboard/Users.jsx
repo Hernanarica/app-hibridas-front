@@ -1,38 +1,52 @@
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 import { TrashIcon } from '@heroicons/react/24/outline/index.js';
 import { deleteUserService, getAllUsersService } from '../../services';
 
 export function Users() {
 	const [ users, setUsers ] = useState([]);
-	
+
 	useEffect(() => {
 		getAllUsersService().then(res => {
 			setUsers(res);
 		});
 	}, []);
-	
+
 	const handleDeleteUser = (id) => {
-		deleteUserService(id).then(res => {
-			setUsers(oldState => oldState.filter(user => user._id !== id));
-			
-			toast.success('Usuario eliminado', {
-				position: "top-right",
-				autoClose: 5000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: undefined,
-				theme: "light",
-			});
+
+		Swal.fire({
+			title: 'Seguro que desea eliminar?',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#5a52e7',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'si, eliminar',
+			cancelButtonText: 'Cancelar'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				deleteUserService(id).then(res => {
+					setUsers(oldState => oldState.filter(user => user._id !== id));
+
+					toast.success('Usuario eliminado', {
+						position: "top-right",
+						autoClose: 5000,
+						hideProgressBar: false,
+						closeOnClick: true,
+						pauseOnHover: true,
+						draggable: true,
+						progress: undefined,
+						theme: "light",
+					});
+				});
+			}
 		});
 	};
-	
+
 	if (users.length === 0) {
 		return <h1>Loading...</h1>
 	}
-	
+
 	return (
 		<div className="px-4 sm:px-6 lg:p-8">
 			<div className="sm:flex sm:items-center">
