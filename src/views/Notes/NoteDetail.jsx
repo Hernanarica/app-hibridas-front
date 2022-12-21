@@ -3,11 +3,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { ChatBubbleBottomCenterIcon, ChevronLeftIcon } from '@heroicons/react/24/outline/index.js';
 import useForm from '../../hooks/useForm';
-import { CommentsContext, UserContext } from '../../state/context';
+import { AuthContext, CommentsContext, UserContext } from '../../state/context';
 import { Note } from './Note';
 
 export function NoteDetail() {
   const { comments, getAllComments, createComment } = useContext(CommentsContext);
+  const { state: { isAuthenticated }} = useContext(AuthContext);
   const { state: { _id: idUser } } = useContext(UserContext);
   const { id: idPost } = useParams();
   const navigate = useNavigate();
@@ -79,27 +80,32 @@ export function NoteDetail() {
           <p>{ post.text }</p>
         </div>
         <div className='flex flex-col gap-5 px-2 pt-2 w-4/12'>
-          <div>
-            <form
-              action="#"
-              method="post"
-              className='text-end'
-              onSubmit={ handleSubmit }
-              >
+          {
+            isAuthenticated &&
+            (
               <div>
-                <label htmlFor="comment" className='sr-only'>Comentario</label>
-                <textarea
-                  name="comment"
-                  id="comment"
-                  placeholder='Escribe un comentario'
-                  className="w-full h-24 border shadow-sm rounded"
-                  onChange={ handleInputChange }
-                  value={ comment }
-                  ></textarea>
+                <form
+                  action="#"
+                  method="post"
+                  className='text-end'
+                  onSubmit={ handleSubmit }
+                  >
+                  <div>
+                    <label htmlFor="comment" className='sr-only'>Comentario</label>
+                    <textarea
+                      name="comment"
+                      id="comment"
+                      placeholder='Escribe un comentario'
+                      className="w-full h-24 border shadow-sm rounded"
+                      onChange={ handleInputChange }
+                      value={ comment }
+                      ></textarea>
+                  </div>
+                  <button type='submit' className='px-3 py-2 bg-indigo-600 text-white rounded'>Comentar</button>
+                </form>
               </div>
-              <button type='submit' className='px-3 py-2 bg-indigo-600 text-white rounded'>Comentar</button>
-            </form>
-          </div>
+            )
+          }
           <div className='relative h-full overflow-y-auto'>
             <div className='sticky top-0 w-full h-10 rotate-180 bg-gradient-to-t from-white'></div>
             <div className='space-y-2'>
